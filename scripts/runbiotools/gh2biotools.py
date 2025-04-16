@@ -71,7 +71,7 @@ def run_upload(token, files):
                 else:
                     logging.debug(f'Tool {tool_id} already registered but changed')
                     # update the existing tool
-                    response = requests.put(tool_url, headers=headers, json=payload_dict)
+                    response = requests.put(tool_url, headers=headers, data=json.dumps(payload_dict))
                     response.raise_for_status()
                     tools_ok.append(tool_id)
                     logging.debug(response.json())
