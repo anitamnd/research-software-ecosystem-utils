@@ -12,6 +12,8 @@ from boltons.iterutils import remap
 HEADERS = {'Content-Type': 'application/json', 'Accept': 'application/json'}
 HOST = 'http://bio-tools-dev.sdu.dk/'
 
+logging.basicConfig(level=logging.DEBUG)
+
 def login(user, password):
     payload = {'username':user,'password':password}
     response = requests.post(HOST+'api/rest-auth/login/', headers=HEADERS, json=payload)
@@ -117,7 +119,7 @@ if __name__ == "__main__":
     if args.files:
         run_upload(args.token, args.files)
 
-    for deleted_file in args.deleted:
-        biotools_id = get_biotools_id_from_path(deleted_file)
-        logging.info(f"Deleting tool {biotools_id}...")
-        delete_tool(args.token, biotools_id)
+#    for deleted_file in args.deleted:
+#        biotools_id = get_biotools_id_from_path(deleted_file)
+#        logging.info(f"Deleting tool {biotools_id}...")
+#        delete_tool(args.token, biotools_id)
