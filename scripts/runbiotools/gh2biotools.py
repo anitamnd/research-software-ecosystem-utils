@@ -105,7 +105,7 @@ def run_upload(token, files):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Sync changed and deleted .biotools.json files with bio.tools server')
 
-    parser.add_argument('token', type=str, help='bio.tools token')
+    parser.add_argument('--token', type=str, help='bio.tools token')
     parser.add_argument('--files', metavar='F', type=str, nargs='+',
                         help='List of changed/created .biotools.json files to process')
     
