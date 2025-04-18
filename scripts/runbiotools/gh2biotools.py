@@ -81,7 +81,7 @@ def run_upload(token, files):
                 # tool not registered, proceed with upload
                 logging.debug(f'Tool {tool_id} not registered, proceeding with upload')
                 
-                response = requests.post(url, headers=headers, json=payload_dict)
+                response = requests.post(url, headers=headers, data=json.dumps(payload_dict))
                 response.raise_for_status()
                 tools_ok.append(payload_dict["biotoolsID"])
                 logging.debug(response.json())
