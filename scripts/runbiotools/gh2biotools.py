@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 from boltons.iterutils import remap
 
 HEADERS = {'Content-Type': 'application/json', 'Accept': 'application/json'}
-HOST = 'http://bio-tools-dev.sdu.dk/'
+HOST = 'http://bio-tools-dev.sdu.dk'
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -71,6 +71,7 @@ def run_upload(token, files):
                 else:
                     logging.debug(f'Tool {tool_id} already registered but changed')
                     # update the existing tool
+                    logging.debug(tool_url)
                     response = requests.put(tool_url, headers=headers, data=json.dumps(payload_dict))
                     response.raise_for_status()
                     tools_ok.append(tool_id)
