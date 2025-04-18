@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 from boltons.iterutils import remap
 
 HEADERS = {'Content-Type': 'application/json', 'Accept': 'application/json'}
-HOST = 'http://bio-tools-dev.sdu.dk'
+HOST = 'https://bio-tools-dev.sdu.dk'
 
 logging.basicConfig(level=logging.DEBUG)
 
