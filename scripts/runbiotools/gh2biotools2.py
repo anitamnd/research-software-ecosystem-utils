@@ -154,7 +154,7 @@ def run_upload(token, files):
             tools_ko.append(payload_dict["biotoolsID"])
 
 
-    logging.info('Tools upload finished')}
+    logging.info('Tools upload finished')
     logging.info(f"Tools OK: {len(tools_ok)}")
     logging.info(f"Tools KO: {len(tools_ko)}")
     logging.info(f"Tools unchanged: {len(tools_unchanged)}")
