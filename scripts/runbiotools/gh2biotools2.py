@@ -28,7 +28,7 @@ def validate_tool(tool, token):
     return (False, r.text)
 
 
-def upload_tool(tool, token, url):
+def upload_tool(tool, token):
     '''Upload a tool using the bio.tools API.'''
     headers = HEADERS.copy()
     headers['Authorization'] = f'Token {token}'
