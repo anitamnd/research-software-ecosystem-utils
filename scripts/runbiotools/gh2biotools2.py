@@ -27,8 +27,8 @@ def get_headers(token):
     return headers
 
 
-def validate_tool(tool, token):
-    '''Validate a tool using the bio.tools API.'''
+def validate_upload_tool(tool, token):
+    '''Validate uploading a tool using the bio.tools API.'''
     url = f'{HOST}/api/tool/validate/'
     response = requests.post(url, headers=get_headers(token), data=json.dumps(tool))
     return response.ok, response.text
@@ -43,6 +43,13 @@ def upload_tool(tool, token):
     except requests.exceptions.RequestException as e:
         logging.error(f"Error uploading {tool['biotoolsID']}: {e}")
         return False, str(e)
+
+
+def validate_update_tool(tool, token):
+    '''Validate updating a tool using the bio.tools API.'''
+    url = f'{HOST}/api/tool/{tool['biotoolsID']}/validate/'
+    response = requests.post(url, headers=get_headers(token), data=json.dumps(tool))
+    return response.ok, response.text
 
 
 def update_tool(tool, token):
@@ -99,7 +106,7 @@ def run_upload(token, files):
 
                 else:
                     logging.info(f'Tool {tool_id} changed, attempting update...')
-                    valid, msg = validate_tool(payload_dict, token)
+                    valid, msg = validate_update_tool(payload_dict, token)
                     if valid:
                         success, msg = update_tool(payload_dict, token)
                         if success:
@@ -115,7 +122,7 @@ def run_upload(token, files):
             elif response.status_code == 404:
                 # tool not registered, proceed with upload
                 logging.info(f'Tool {tool_id} not registered, proceeding with upload')                    
-                valid, msg = validate_tool(payload_dict, token)
+                valid, msg = validate_upload_tool(payload_dict, token)
                 if valid:
                     success, msg = upload_tool(payload_dict, token)
                     if success:
