@@ -5,6 +5,7 @@ import json
 import logging
 import argparse
 import os
+import sys
 import requests
 from bs4 import BeautifulSoup
 from boltons.iterutils import remap
