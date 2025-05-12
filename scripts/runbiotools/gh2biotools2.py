@@ -48,7 +48,7 @@ def upload_tool(tool, token):
 def validate_update_tool(tool, token):
     '''Validate updating a tool using the bio.tools API.'''
     url = f'{HOST}/api/tool/{tool['biotoolsID']}/validate/'
-    response = requests.post(url, headers=get_headers(token), data=json.dumps(tool))
+    response = requests.put(url, headers=get_headers(token), data=json.dumps(tool))
     return response.ok, response.text
 
 
