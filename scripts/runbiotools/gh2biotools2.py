@@ -88,7 +88,7 @@ def run_upload(token, files):
                 continue
 
             tool_url = f'{HOST}/api/tool/{tool_id}/'
-            response = requests.get(tool_url, headers=get_headers(token))
+            response = requests.get(tool_url, headers=HEADERS)
 
             if response.status_code == 200:
                 existing_tool = remap(response.json(), lambda p, k, v: k != 'term')
