@@ -151,6 +151,9 @@ def run_upload(token, files):
     logging.info(f"❌ Failed: {len(tools_ko)}: {tools_ko}")
     logging.info(f"⚠️ Unchanged: {len(tools_unchanged)}: {tools_unchanged}")
 
+    if tools_ko:
+        sys.exit(1)
+
 
 
 if __name__ == "__main__":
